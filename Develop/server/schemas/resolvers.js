@@ -12,7 +12,7 @@ const resolvers = {
     },
     Mutation: {
 
-        // login mutation
+        // login mutation, returns Auth
         login: async (parent, args) => {
             const user = await User.findOne({ email: args.email });
             if (!user) {
@@ -26,7 +26,7 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        // add user mutation 
+        // add user mutation returns auth
     addUser: async (parent, args) => {
         const user = await User.create(args);
         const token = signToken(user);
@@ -43,6 +43,7 @@ const resolvers = {
             return user;
         } throw new Error("user not found");
     },
+    // remove book mutation returning user type
     removeBook: async (parent, args, context) => {
         if (context.user) {
             const user = await User.findByIdAndUpdate(
