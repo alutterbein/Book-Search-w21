@@ -6,8 +6,12 @@ const routes = require('./routes');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://127.0.0.1:27017/googlebooks');
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
 
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === 'production') {
