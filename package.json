@@ -15,10 +15,13 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.0"
-  },
+  }, 
   "dependencies": {
+    "@apollo/server": "^4.7.1",
+    "@apollo/client": "^3.10.6",
     "apollo-server-express": "^3.11.1",
     "express": "^4.17.1",
     "graphql":"16.9.0"
-  }
+  },
+  "engines":{"node": "16.19.1"}
 }
