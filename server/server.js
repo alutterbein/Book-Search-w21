@@ -11,17 +11,17 @@ const authMiddleware = require('./utils/auth');
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  introspection: true,
 });
 const startApolloServer = async () => {
   await server.start();
   
-
-// server.applyMiddleware({ app });
-  app.use('graphql', expressMiddleware(server,{
-    context: authMiddleware}));
-
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
+  app.use('/graphql', expressMiddleware(server,{
+    context: authMiddleware}));
+
+
 
 
 if (process.env.NODE_ENV === 'production') {
